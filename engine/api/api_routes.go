@@ -259,6 +259,7 @@ func (api *API) InitRouter() {
 	r.Handle("/queue/workflows/{permID}/result", r.POSTEXECUTE(r.Asynchronous(api.postWorkflowJobResultHandler, 10), NeedWorker()))
 	r.Handle("/queue/workflows/{permID}/log", r.POSTEXECUTE(r.Asynchronous(api.postWorkflowJobLogsHandler, 5), NeedWorker()))
 	r.Handle("/queue/workflows/{permID}/test", r.POSTEXECUTE(r.Asynchronous(api.postWorkflowJobTestsResultsHandler, 5), NeedWorker()))
+	r.Handle("/queue/workflows/{permID}/tag", r.POSTEXECUTE(r.Asynchronous(api.postWorkflowJobTagsHandler, 5), NeedWorker()))
 	r.Handle("/queue/workflows/{permID}/variable", r.POSTEXECUTE(r.Asynchronous(api.postWorkflowJobVariableHandler, 5), NeedWorker()))
 	r.Handle("/queue/workflows/{permID}/step", r.POSTEXECUTE(r.Asynchronous(api.postWorkflowJobStepStatusHandler, 5), NeedWorker()))
 	r.Handle("/queue/workflows/{permID}/artifact/{tag}", r.POSTEXECUTE(r.Asynchronous(api.postWorkflowJobArtifactHandler, 5), NeedWorker()))
